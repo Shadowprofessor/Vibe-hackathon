@@ -188,6 +188,57 @@ export default function Results() {
             </div>
           </section>
 
+          {/* Enhanced Visual Details */}
+          {analysis.enhanced_visual_details && (
+            <section className="bg-gradient-to-br from-cyan-900/30 to-blue-900/20 border border-cyan-700/50 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                🔬 Enhanced Visual Details
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {analysis.enhanced_visual_details.carving_techniques && (
+                  <div className="bg-slate-800/50 rounded p-4 border border-slate-700">
+                    <h3 className="text-cyan-200 font-semibold mb-2">Carving Techniques</h3>
+                    <p className="text-slate-300 text-sm">
+                      {analysis.enhanced_visual_details.carving_techniques}
+                    </p>
+                  </div>
+                )}
+                {analysis.enhanced_visual_details.material_condition && (
+                  <div className="bg-slate-800/50 rounded p-4 border border-slate-700">
+                    <h3 className="text-cyan-200 font-semibold mb-2">Material Condition</h3>
+                    <p className="text-slate-300 text-sm">
+                      {analysis.enhanced_visual_details.material_condition}
+                    </p>
+                  </div>
+                )}
+                {analysis.enhanced_visual_details.iconography_details && (
+                  <div className="bg-slate-800/50 rounded p-4 border border-slate-700 md:col-span-2">
+                    <h3 className="text-cyan-200 font-semibold mb-2">Iconography Details</h3>
+                    <p className="text-slate-300 text-sm">
+                      {analysis.enhanced_visual_details.iconography_details}
+                    </p>
+                  </div>
+                )}
+                {analysis.enhanced_visual_details.architectural_features &&
+                  analysis.enhanced_visual_details.architectural_features.length > 0 && (
+                    <div className="bg-slate-800/50 rounded p-4 border border-slate-700 md:col-span-2">
+                      <h3 className="text-cyan-200 font-semibold mb-2">Architectural Features</h3>
+                      <ul className="text-slate-300 text-sm space-y-1">
+                        {analysis.enhanced_visual_details.architectural_features.map(
+                          (feature, idx) => (
+                            <li key={idx} className="flex gap-2">
+                              <span className="text-cyan-400">•</span>
+                              <span>{feature}</span>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+            </section>
+          )}
+
           {/* Hypotheses Section */}
           <section className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
