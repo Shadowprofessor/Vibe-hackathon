@@ -437,6 +437,32 @@ HERITAGE ANALYSIS REPORT
 🔍 VISUAL ANALYSIS SUMMARY
 ${analysis.visual_analysis}
 
+${
+  analysis.enhanced_visual_details
+    ? `🔬 ENHANCED VISUAL DETAILS
+${
+  analysis.enhanced_visual_details.carving_techniques
+    ? `Carving Techniques: ${analysis.enhanced_visual_details.carving_techniques}\n`
+    : ""
+}${
+  analysis.enhanced_visual_details.material_condition
+    ? `Material Condition: ${analysis.enhanced_visual_details.material_condition}\n`
+    : ""
+}${
+  analysis.enhanced_visual_details.iconography_details
+    ? `Iconography Details: ${analysis.enhanced_visual_details.iconography_details}\n`
+    : ""
+}${
+  analysis.enhanced_visual_details.architectural_features &&
+  analysis.enhanced_visual_details.architectural_features.length > 0
+    ? `Architectural Features:\n${analysis.enhanced_visual_details.architectural_features
+        .map((f) => `  - ${f}`)
+        .join("\n")}\n`
+    : ""
+}
+`
+    : ""
+}
 🧭 INITIAL HYPOTHESES
 ${analysis.hypotheses.map((h, i) => `${i + 1}. ${h}`).join("\n")}
 
