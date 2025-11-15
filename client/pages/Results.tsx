@@ -306,7 +306,7 @@ export default function Results() {
               {analysis.ranked_interpretations.map((interp) => (
                 <div
                   key={interp.rank}
-                  className="border-l-4 border-amber-500 pl-4"
+                  className="border-l-4 border-amber-500 pl-4 space-y-3"
                 >
                   <div className="flex items-start justify-between mb-2">
                     <h4 className="text-lg font-bold text-amber-200">
@@ -324,6 +324,46 @@ export default function Results() {
                     <span className="font-semibold text-white">Narrative:</span>{" "}
                     {interp.narrative}
                   </p>
+
+                  {/* Monument Images */}
+                  {interp.monument_images && interp.monument_images.length > 0 && (
+                    <div className="mt-4">
+                      <p className="text-amber-200 font-semibold text-sm mb-2">
+                        📸 Images of {interp.hypothesis.split("—")[0].trim()}
+                      </p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {interp.monument_images.map((imgUrl, idx) => (
+                          <img
+                            key={idx}
+                            src={imgUrl}
+                            alt={`${interp.hypothesis} - image ${idx + 1}`}
+                            className="rounded border border-slate-600 object-cover h-24 w-full"
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Resembles Section */}
+                  {interp.resembles && interp.resembles.length > 0 && (
+                    <div className="mt-4">
+                      <p className="text-amber-200 font-semibold text-sm mb-2">
+                        🏛️ Resembles & Similar Structures
+                      </p>
+                      <ul className="text-slate-300 text-sm space-y-1">
+                        {interp.resembles.map((similar, idx) => (
+                          <li key={idx} className="flex gap-2">
+                            <span className="text-amber-400">→</span>
+                            <span>{similar}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   <button
                     onClick={() => handleCopy(interp.narrative)}
                     className="mt-2 text-xs text-slate-400 hover:text-amber-400 flex items-center gap-1"
