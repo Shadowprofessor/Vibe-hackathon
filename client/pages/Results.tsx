@@ -29,6 +29,12 @@ interface AnalysisResult {
     why_visit: string;
     period: string;
   }>;
+  enhanced_visual_details?: {
+    carving_techniques?: string;
+    material_condition?: string;
+    architectural_features?: string[];
+    iconography_details?: string;
+  };
   is_heritage: boolean;
   is_valid: boolean;
   error?: string;
