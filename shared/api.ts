@@ -31,6 +31,8 @@ export interface AnalysisResult {
     confidence: number;
     summary: string;
     narrative: string;
+    resembles?: string[];
+    monument_images?: string[];
   }>;
   nearby_heritage_sites?: Array<{
     name: string;
@@ -40,6 +42,12 @@ export interface AnalysisResult {
     why_visit: string;
     period: string;
   }>;
+  enhanced_visual_details?: {
+    carving_techniques?: string;
+    material_condition?: string;
+    architectural_features?: string[];
+    iconography_details?: string;
+  };
   is_heritage: boolean;
   is_valid: boolean;
   error?: string;
