@@ -203,6 +203,24 @@ Provide a COMPLETE analysis using this JSON structure (respond ONLY with valid J
       "summary": "Least likely match",
       "narrative": "Why this is the least probable option..."
     }
+  ],
+  "nearby_heritage_sites": [
+    {
+      "name": "Site name 1",
+      "location": "City/Region",
+      "distance_km": 50,
+      "description": "Brief description of the site and its architectural/cultural significance",
+      "why_visit": "Reason to visit alongside the identified monument - what makes it complementary",
+      "period": "Historical period (e.g., Chola, Vijayanagara, 12th Century)"
+    },
+    {
+      "name": "Site name 2",
+      "location": "City/Region",
+      "distance_km": 75,
+      "description": "Brief description of the site",
+      "why_visit": "Why visit this site - its relation to the main heritage element",
+      "period": "Historical period"
+    }
   ]
 }
 
@@ -212,7 +230,11 @@ IMPORTANT:
 - Include actual historical periods, dynasty names, and architectural schools
 - Generate realistic confidence scores (40-95% range)
 - Make narratives historically plausible and detailed
-- Reference actual architectural treatises, carving traditions, and historical records where applicable`;
+- Reference actual architectural treatises, carving traditions, and historical records where applicable
+- For nearby_heritage_sites: Recommend 2-5 real heritage sites within 100-150 km of the identified monument
+- Include sites of similar period or complementary architectural styles
+- Provide realistic distance estimates
+- Explain why each site is worth visiting alongside the main heritage element`;
 
   const prompt = mode === "detect" ? detectPrompt : analyzePrompt;
 
