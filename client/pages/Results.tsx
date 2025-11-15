@@ -256,6 +256,36 @@ export default function Results() {
             </div>
           </section>
 
+          {/* Nearby Heritage Sites */}
+          {analysis.nearby_heritage_sites && analysis.nearby_heritage_sites.length > 0 && (
+            <section className="bg-gradient-to-br from-green-900/30 to-teal-900/20 border border-green-700/50 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                🗺️ Nearby Heritage Sites to Explore
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {analysis.nearby_heritage_sites.map((site, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 hover:border-green-600 transition-colors"
+                  >
+                    <div className="mb-3">
+                      <h3 className="text-lg font-bold text-green-200">{site.name}</h3>
+                      <p className="text-sm text-slate-400">
+                        📍 {site.location}
+                        {site.distance_km && ` • ${site.distance_km} km away`}
+                      </p>
+                      <p className="text-xs text-amber-400 mt-1">Period: {site.period}</p>
+                    </div>
+                    <p className="text-sm text-slate-300 mb-3">{site.description}</p>
+                    <p className="text-sm text-slate-300 italic border-l-2 border-green-500 pl-3">
+                      {site.why_visit}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Refinement Prompt */}
           <section className="bg-blue-900/30 border border-blue-700/50 rounded-lg p-6 text-center">
             <p className="text-blue-200 mb-4">
