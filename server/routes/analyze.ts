@@ -124,6 +124,7 @@ interface GeminiAnalysisResult {
     confidence: number;
     summary: string;
     narrative: string;
+    resembles?: string[];
   }>;
   nearby_heritage_sites?: Array<{
     name: string;
@@ -133,6 +134,12 @@ interface GeminiAnalysisResult {
     why_visit: string;
     period: string;
   }>;
+  enhanced_visual_details?: {
+    carving_techniques?: string;
+    material_condition?: string;
+    architectural_features?: string[];
+    iconography_details?: string;
+  };
 }
 
 async function analyzeWithGemini(
