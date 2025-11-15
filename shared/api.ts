@@ -32,6 +32,14 @@ export interface AnalysisResult {
     summary: string;
     narrative: string;
   }>;
+  nearby_heritage_sites?: Array<{
+    name: string;
+    location: string;
+    distance_km?: number;
+    description: string;
+    why_visit: string;
+    period: string;
+  }>;
   is_heritage: boolean;
   is_valid: boolean;
   error?: string;
