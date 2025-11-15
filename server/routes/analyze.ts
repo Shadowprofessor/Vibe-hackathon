@@ -53,8 +53,16 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
     // Step 4: Get detailed analysis from Gemini
     const analysis = await analyzeWithGemini(base64Image, text, "analyze");
 
-    // Step 5: Generate ranked interpretations
-    const rankedInterpretations = analysis.ranked_interpretations;
+    // Step 5: Enhance ranked interpretations with images and details
+    const rankedInterpretations = await Promise.all(
+      (analysis.ranked_interpretations || []).map(async (interp) => {
+        const monumentImages = await fetchMonumentImages(interp.hypothesis);
+        return {
+          ...interp,
+          monument_images: monumentImages,
+        };
+      })
+    );
 
     const result: AnalysisResult = {
       visual_analysis: analysis.visual_analysis,
@@ -67,6 +75,7 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
       },
       ranked_interpretations: rankedInterpretations,
       nearby_heritage_sites: analysis.nearby_heritage_sites,
+      enhanced_visual_details: analysis.enhanced_visual_details,
       is_heritage: true,
       is_valid: true,
     };
