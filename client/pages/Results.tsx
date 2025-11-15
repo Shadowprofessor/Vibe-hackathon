@@ -42,7 +42,10 @@ export default function Results() {
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 flex items-center justify-center">
         <div className="text-center space-y-4">
           <p className="text-white text-lg">No analysis data found</p>
-          <Button onClick={() => navigate("/")} className="bg-amber-500 hover:bg-amber-600">
+          <Button
+            onClick={() => navigate("/")}
+            className="bg-amber-500 hover:bg-amber-600"
+          >
             Back to Home
           </Button>
         </div>
@@ -82,9 +85,12 @@ export default function Results() {
           </Button>
 
           <div className="bg-red-900/30 border border-red-700/50 rounded-lg p-8 max-w-2xl mx-auto text-center">
-            <p className="text-2xl font-bold text-red-200 mb-2">Invalid Image</p>
+            <p className="text-2xl font-bold text-red-200 mb-2">
+              Invalid Image
+            </p>
             <p className="text-red-300 mb-4">
-              {analysis.error || "The uploaded file could not be processed as a valid image."}
+              {analysis.error ||
+                "The uploaded file could not be processed as a valid image."}
             </p>
             <Button
               onClick={() => navigate("/")}
@@ -113,9 +119,13 @@ export default function Results() {
           </Button>
 
           <div className="bg-yellow-900/30 border border-yellow-700/50 rounded-lg p-8 max-w-2xl mx-auto text-center">
-            <p className="text-2xl font-bold text-yellow-200 mb-2">Not Heritage Content</p>
+            <p className="text-2xl font-bold text-yellow-200 mb-2">
+              Not Heritage Content
+            </p>
             <p className="text-yellow-300 mb-4">
-              This image does not appear to contain Indian monuments, temples, sculptures, or heritage structures. Please upload an image of an actual heritage site or artifact for analysis.
+              This image does not appear to contain Indian monuments, temples,
+              sculptures, or heritage structures. Please upload an image of an
+              actual heritage site or artifact for analysis.
             </p>
             <p className="text-sm text-yellow-200 mb-4">
               The system detected: {analysis.error || "Non-heritage content"}
@@ -199,7 +209,9 @@ export default function Results() {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Architectural Historian */}
             <section className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">🟦 Architectural Historian</h3>
+              <h3 className="text-xl font-bold text-white mb-4">
+                🟦 Architectural Historian
+              </h3>
               <p className="text-slate-300 text-sm leading-relaxed">
                 {analysis.agent_analyses.architectural}
               </p>
@@ -207,7 +219,9 @@ export default function Results() {
 
             {/* Cultural Analyst */}
             <section className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">🟩 Cultural Context Analyst</h3>
+              <h3 className="text-xl font-bold text-white mb-4">
+                🟩 Cultural Context Analyst
+              </h3>
               <p className="text-slate-300 text-sm leading-relaxed">
                 {analysis.agent_analyses.cultural}
               </p>
@@ -215,7 +229,9 @@ export default function Results() {
 
             {/* Data Verifier */}
             <section className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">🟧 Data Verifier</h3>
+              <h3 className="text-xl font-bold text-white mb-4">
+                🟧 Data Verifier
+              </h3>
               <p className="text-slate-300 text-sm leading-relaxed">
                 {analysis.agent_analyses.verification}
               </p>
@@ -229,7 +245,10 @@ export default function Results() {
             </h2>
             <div className="space-y-6">
               {analysis.ranked_interpretations.map((interp) => (
-                <div key={interp.rank} className="border-l-4 border-amber-500 pl-4">
+                <div
+                  key={interp.rank}
+                  className="border-l-4 border-amber-500 pl-4"
+                >
                   <div className="flex items-start justify-between mb-2">
                     <h4 className="text-lg font-bold text-amber-200">
                       {interp.rank}. {interp.hypothesis}
@@ -239,10 +258,12 @@ export default function Results() {
                     </span>
                   </div>
                   <p className="text-slate-300 mb-3">
-                    <span className="font-semibold text-white">Summary:</span> {interp.summary}
+                    <span className="font-semibold text-white">Summary:</span>{" "}
+                    {interp.summary}
                   </p>
                   <p className="text-slate-300 text-sm italic">
-                    <span className="font-semibold text-white">Narrative:</span> {interp.narrative}
+                    <span className="font-semibold text-white">Narrative:</span>{" "}
+                    {interp.narrative}
                   </p>
                   <button
                     onClick={() => handleCopy(interp.narrative)}
@@ -257,40 +278,45 @@ export default function Results() {
           </section>
 
           {/* Nearby Heritage Sites */}
-          {analysis.nearby_heritage_sites && analysis.nearby_heritage_sites.length > 0 && (
-            <section className="bg-gradient-to-br from-green-900/30 to-teal-900/20 border border-green-700/50 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                🗺️ Nearby Heritage Sites to Explore
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {analysis.nearby_heritage_sites.map((site, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 hover:border-green-600 transition-colors"
-                  >
-                    <div className="mb-3">
-                      <h3 className="text-lg font-bold text-green-200">{site.name}</h3>
-                      <p className="text-sm text-slate-400">
-                        📍 {site.location}
-                        {site.distance_km && ` • ${site.distance_km} km away`}
+          {analysis.nearby_heritage_sites &&
+            analysis.nearby_heritage_sites.length > 0 && (
+              <section className="bg-gradient-to-br from-green-900/30 to-teal-900/20 border border-green-700/50 rounded-lg p-6">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  🗺️ Nearby Heritage Sites to Explore
+                </h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {analysis.nearby_heritage_sites.map((site, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 hover:border-green-600 transition-colors"
+                    >
+                      <div className="mb-3">
+                        <h3 className="text-lg font-bold text-green-200">
+                          {site.name}
+                        </h3>
+                        <p className="text-sm text-slate-400">
+                          📍 {site.location}
+                          {site.distance_km && ` • ${site.distance_km} km away`}
+                        </p>
+                        <p className="text-xs text-amber-400 mt-1">
+                          Period: {site.period}
+                        </p>
+                      </div>
+                      <p className="text-sm text-slate-300 mb-3">
+                        {site.description}
                       </p>
-                      <p className="text-xs text-amber-400 mt-1">Period: {site.period}</p>
+                      <p className="text-sm text-slate-300 italic border-l-2 border-green-500 pl-3">
+                        {site.why_visit}
+                      </p>
                     </div>
-                    <p className="text-sm text-slate-300 mb-3">{site.description}</p>
-                    <p className="text-sm text-slate-300 italic border-l-2 border-green-500 pl-3">
-                      {site.why_visit}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+                  ))}
+                </div>
+              </section>
+            )}
 
           {/* Refinement Prompt */}
           <section className="bg-blue-900/30 border border-blue-700/50 rounded-lg p-6 text-center">
-            <p className="text-blue-200 mb-4">
-              Want to refine these results?
-            </p>
+            <p className="text-blue-200 mb-4">Want to refine these results?</p>
             <Button
               onClick={() => navigate("/")}
               className="bg-blue-600 hover:bg-blue-700"
@@ -334,7 +360,7 @@ ${analysis.ranked_interpretations
 ${interp.rank}. ${interp.hypothesis} — ${interp.confidence}%
 Summary: ${interp.summary}
 Narrative: ${interp.narrative}
-`
+`,
   )
   .join("\n")}
 
@@ -349,7 +375,7 @@ ${idx + 1}. ${site.name}
    Period: ${site.period}
    Description: ${site.description}
    Why Visit: ${site.why_visit}
-`
+`,
         )
         .join("\n")
     : "No nearby heritage sites recommendations available"

@@ -127,7 +127,7 @@ interface GeminiAnalysisResult {
 async function analyzeWithGemini(
   base64Image: string,
   userContext: string,
-  mode: "detect" | "analyze"
+  mode: "detect" | "analyze",
 ): Promise<GeminiAnalysisResult> {
   const detectPrompt = `You are an expert in Indian heritage, monuments, temples, sculptures, and artifacts. Analyze this image carefully.
 
@@ -274,21 +274,14 @@ IMPORTANT:
     }
 
     const data = await response.json();
-    const responseText =
-      data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
     // Extract JSON from response (handle cases where it's wrapped in markdown)
     let jsonText = responseText;
     if (responseText.includes("```json")) {
-      jsonText = responseText
-        .split("```json")[1]
-        .split("```")[0]
-        .trim();
+      jsonText = responseText.split("```json")[1].split("```")[0].trim();
     } else if (responseText.includes("```")) {
-      jsonText = responseText
-        .split("```")[1]
-        .split("```")[0]
-        .trim();
+      jsonText = responseText.split("```")[1].split("```")[0].trim();
     }
 
     const result = JSON.parse(jsonText);
