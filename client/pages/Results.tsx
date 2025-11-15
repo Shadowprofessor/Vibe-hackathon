@@ -351,7 +351,7 @@ export default function Results() {
                   {interp.resembles && interp.resembles.length > 0 && (
                     <div className="mt-4">
                       <p className="text-amber-200 font-semibold text-sm mb-2">
-                        🏛️ Resembles & Similar Structures
+                        🏛�� Resembles & Similar Structures
                       </p>
                       <ul className="text-slate-300 text-sm space-y-1">
                         {interp.resembles.map((similar, idx) => (
@@ -485,6 +485,11 @@ ${analysis.ranked_interpretations
 ${interp.rank}. ${interp.hypothesis} — ${interp.confidence}%
 Summary: ${interp.summary}
 Narrative: ${interp.narrative}
+${
+  interp.resembles && interp.resembles.length > 0
+    ? `Resembles & Similar Structures:\n${interp.resembles.map((r) => `  - ${r}`).join("\n")}`
+    : ""
+}
 `,
   )
   .join("\n")}
