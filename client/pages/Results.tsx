@@ -18,6 +18,8 @@ interface AnalysisResult {
     confidence: number;
     summary: string;
     narrative: string;
+    resembles?: string[];
+    monument_images?: string[];
   }>;
   nearby_heritage_sites?: Array<{
     name: string;
