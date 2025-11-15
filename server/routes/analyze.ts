@@ -145,14 +145,14 @@ Respond ONLY with valid JSON (no markdown, no explanation):
   "reason": "Brief explanation if not heritage or what was detected if heritage"
 }`;
 
-  const analyzePrompt = `You are an expert in Indian heritage architecture, history, and cultural analysis. Analyze this image of an Indian heritage site/monument in extreme detail.
+  const analyzePrompt = `You are an expert in Indian heritage architecture, history, and cultural analysis. Analyze this image of an Indian heritage site/monument in extreme detail. Focus on the heritage elements visible (even if people are present in the image).
 
 USER CONTEXT: ${userContext || "No additional context provided"}
 
 Provide a COMPLETE analysis using this JSON structure (respond ONLY with valid JSON, no markdown):
 
 {
-  "visual_analysis": "Detailed visual cue extraction including architectural style (Dravidian/Nagara/Indo-Islamic/Hoysala/Mughal/etc), materials (granite/sandstone/marble/soapstone), structures (gopurams/pillars/domes/arches/mandapas), iconography, carvings, inscriptions visible, estimated period, and likely dynasties",
+  "visual_analysis": "Detailed visual cue extraction including architectural style (Dravidian/Nagara/Indo-Islamic/Hoysala/Mughal/etc), materials (granite/sandstone/marble/soapstone), structures (gopurams/pillars/domes/arches/mandapas), iconography, carvings, inscriptions visible, estimated period, and likely dynasties. Focus on heritage elements even if people are visible in the image",
   "hypotheses": ["hypothesis 1", "hypothesis 2", "hypothesis 3", "hypothesis 4", "hypothesis 5"],
   "evidence": "Web-style evidence synthesis about this type of monument, including historical background, architectural comparisons, cultural themes, dynastic information, and related monuments. Make specific references to known sites and their characteristics",
   "architectural_analysis": "Detailed architectural historian analysis covering structural style, building material, dynasty/period traits, and comparisons to known monuments",
