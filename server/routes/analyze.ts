@@ -122,14 +122,20 @@ async function analyzeWithGemini(
 ): Promise<GeminiAnalysisResult> {
   const detectPrompt = `You are an expert in Indian heritage, monuments, temples, sculptures, and artifacts. Analyze this image carefully.
 
-CRITICAL TASK: First, determine if this is an image of Indian heritage (temples, monuments, sculptures, artifacts, historical buildings, inscriptions, carvings).
+CRITICAL TASK: Determine if this image contains Indian heritage (temples, monuments, sculptures, artifacts, historical buildings, inscriptions, carvings, architectural elements).
 
-REJECT IF:
-- Image contains humans/people
-- Image is of modern buildings/houses
-- Image is anime/cartoon/artwork
-- Image is animals or nature (without heritage structures)
-- Image is unclear or damaged beyond recognition
+ACCEPT IF:
+- Image shows Indian temples, monuments, sculptures, or artifacts (even if people are visible)
+- Image shows historical buildings, forts, palaces
+- Image shows carved reliefs, inscriptions, or architectural details
+- People may be present at heritage sites - this is acceptable if heritage is the main subject
+
+REJECT ONLY IF:
+- Image is primarily of modern buildings/houses without heritage value
+- Image is anime/cartoon/artwork/digital art
+- Image is animals or nature landscapes (without any heritage structures)
+- Image is too unclear or damaged to identify heritage elements
+- Image is primarily of people/portraits without heritage context
 
 USER CONTEXT: ${userContext || "No additional context provided"}
 
