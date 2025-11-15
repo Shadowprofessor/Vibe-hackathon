@@ -64,6 +64,7 @@ export const handleAnalyze: RequestHandler = async (req, res) => {
         verification: analysis.verification_analysis,
       },
       ranked_interpretations: rankedInterpretations,
+      nearby_heritage_sites: analysis.nearby_heritage_sites,
       is_heritage: true,
       is_valid: true,
     };
@@ -112,6 +113,14 @@ interface GeminiAnalysisResult {
     confidence: number;
     summary: string;
     narrative: string;
+  }>;
+  nearby_heritage_sites?: Array<{
+    name: string;
+    location: string;
+    distance_km?: number;
+    description: string;
+    why_visit: string;
+    period: string;
   }>;
 }
 
