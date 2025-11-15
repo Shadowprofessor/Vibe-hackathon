@@ -263,7 +263,11 @@ IMPORTANT:
 - For nearby_heritage_sites: Recommend 2-5 real heritage sites within 100-150 km of the identified monument
 - Include sites of similar period or complementary architectural styles
 - Provide realistic distance estimates
-- Explain why each site is worth visiting alongside the main heritage element`;
+- Explain why each site is worth visiting alongside the main heritage element
+- For resembles: List 2-4 other Indian heritage sites or architectural styles that share similar characteristics with each ranked hypothesis
+- Include reasons why they resemble (similar architectural style, period, carving tradition, iconography, materials, etc.)
+- For enhanced_visual_details: Extract specific details about carving techniques, material condition, architectural features, and iconography visible in the image
+- Be specific about tool marks, relief techniques, weathering patterns, and symbolic meanings`;
 
   const prompt = mode === "detect" ? detectPrompt : analyzePrompt;
 
