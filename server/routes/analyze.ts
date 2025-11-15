@@ -5,7 +5,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SERP_API_KEY = process.env.SERP_API_KEY;
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-const SERP_API_URL = "https://api.search.brave.com/res/v1/web/search";
+const SERP_API_URL = "https://serpapi.com/search";
 
 export const handleAnalyze: RequestHandler = async (req, res) => {
   const { image, text } = req.body as AnalysisRequest;
