@@ -324,3 +324,42 @@ IMPORTANT:
     throw error;
   }
 }
+
+async function fetchMonumentImages(monumentName: string): Promise<string[]> {
+  if (!SERP_API_KEY) {
+    console.warn("SerpAPI key not configured, skipping image fetch");
+    return [];
+  }
+
+  try {
+    const searchQuery = `${monumentName} heritage site architecture`;
+
+    const response = await fetch(
+      `${SERP_API_URL}?q=${encodeURIComponent(searchQuery)}&tbm=isch&api_key=${SERP_API_KEY}&num=5`,
+      {
+        method: "GET",
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      console.warn(`SerpAPI request failed: ${response.statusText}`);
+      return [];
+    }
+
+    const data = await response.json() as {
+      images_results?: Array<{ original: string; title: string }>;
+    };
+
+    const images = data.images_results || [];
+    return images
+      .slice(0, 4)
+      .map((img) => img.original)
+      .filter((url) => url && typeof url === "string");
+  } catch (error) {
+    console.error("Error fetching images:", error);
+    return [];
+  }
+}
