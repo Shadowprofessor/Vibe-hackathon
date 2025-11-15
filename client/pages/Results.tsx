@@ -337,5 +337,22 @@ Narrative: ${interp.narrative}
 `
   )
   .join("\n")}
+
+🗺️ NEARBY HERITAGE SITES TO EXPLORE
+${
+  analysis.nearby_heritage_sites && analysis.nearby_heritage_sites.length > 0
+    ? analysis.nearby_heritage_sites
+        .map(
+          (site, idx) => `
+${idx + 1}. ${site.name}
+   Location: ${site.location}${site.distance_km ? ` (${site.distance_km} km away)` : ""}
+   Period: ${site.period}
+   Description: ${site.description}
+   Why Visit: ${site.why_visit}
+`
+        )
+        .join("\n")
+    : "No nearby heritage sites recommendations available"
+}
   `.trim();
 }
