@@ -191,37 +191,48 @@ Provide a COMPLETE analysis using this JSON structure (respond ONLY with valid J
       "hypothesis": "Most likely identification",
       "confidence": 90,
       "summary": "Why this is the best match",
-      "narrative": "If this belongs to [dynasty], then it likely represents... [detailed historical narrative about what this monument would have been used for, who built it, what cultural significance it held]"
+      "narrative": "If this belongs to [dynasty], then it likely represents... [detailed historical narrative about what this monument would have been used for, who built it, what cultural significance it held]",
+      "resembles": ["Similar site 1 with reason why", "Similar site 2 with reason why", "Similar site 3"]
     },
     {
       "rank": 2,
       "hypothesis": "Second most likely",
       "confidence": 75,
       "summary": "Why this could match",
-      "narrative": "Alternative historical narrative..."
+      "narrative": "Alternative historical narrative...",
+      "resembles": ["Similar structure"]
     },
     {
       "rank": 3,
       "hypothesis": "Third possibility",
       "confidence": 60,
       "summary": "Supporting evidence",
-      "narrative": "Historical context for this option..."
+      "narrative": "Historical context for this option...",
+      "resembles": ["Related site"]
     },
     {
       "rank": 4,
       "hypothesis": "Fourth possibility",
       "confidence": 50,
       "summary": "Less likely match",
-      "narrative": "Why this is less probable..."
+      "narrative": "Why this is less probable...",
+      "resembles": []
     },
     {
       "rank": 5,
       "hypothesis": "Fifth possibility",
       "confidence": 40,
       "summary": "Least likely match",
-      "narrative": "Why this is the least probable option..."
+      "narrative": "Why this is the least probable option...",
+      "resembles": []
     }
   ],
+  "enhanced_visual_details": {
+    "carving_techniques": "Description of carving/sculpting techniques visible (chiseling style, tool marks, relief depth)",
+    "material_condition": "Current condition of the artifact/monument (weathered, intact, damage assessment, restoration marks)",
+    "architectural_features": ["List of specific architectural elements visible", "Structural components", "Decorative features"],
+    "iconography_details": "Detailed description of symbols, deities, mythological scenes visible in the artwork"
+  },
   "nearby_heritage_sites": [
     {
       "name": "Site name 1",
